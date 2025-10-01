@@ -1,12 +1,13 @@
 const request = require('supertest');
 const { expect } = require('chai');
 const postLogin = require('../fixtures/postLogin.json');
+require('dotenv').config();
 
 describe('Login', () => {
     it('Should return status 200 when logging in with a valid user', async () => {
         const bodyLogin = { ...postLogin };
 
-        const resposta = await request('http://localhost:3000')
+        const resposta = await request(process.env.BASE_URL_REST)
             .post('/users/login')
             .set('Content-Type', 'application/json')
             .send(bodyLogin);

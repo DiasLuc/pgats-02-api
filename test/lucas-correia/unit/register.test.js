@@ -1,12 +1,13 @@
 const request = require('supertest');
 const { expect } = require('chai');
 const postRegister = require('../fixtures/postRegister.json');
+require('dotenv').config();
 
 describe('Register', () => {
     it('Should return user already exists error with status 400', async () => {
         const bodyLogin = { ...postRegister };
 
-        const resposta = await request('http://localhost:3000')
+        const resposta = await request(process.env.BASE_URL_REST)
             .post('/users/register')
             .set('Content-Type', 'application/json')
             .send(bodyLogin);
