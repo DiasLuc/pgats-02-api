@@ -29,8 +29,8 @@ export default function () {
   const res = http.post(url, payload, params);
 
   check(res, {
-    'Validar que o status é 200': (r) => r.status === 200,
-    'Validar que o token é string': (r) => typeof r.json().token == 'string',
+    'Validate that the status is 200': (r) => r.status === 200,
+    'Validate that the token is a string': (r) => typeof r.json().token == 'string',
   });
 
   sleep(1);
