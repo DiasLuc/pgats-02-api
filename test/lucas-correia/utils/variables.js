@@ -1,5 +1,5 @@
 const configLocal = JSON.parse(open('../config/config.local.json'));
 
-export function pegarBaseUrl() {
+export function getBaseUrl() {
     return __ENV.BASE_URL || configLocal.baseUrl;
 }

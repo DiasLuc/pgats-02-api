@@ -1,6 +1,6 @@
 import http from 'k6/http';
 import { sleep,check } from 'k6';
-import { pegarBaseUrl } from '../utils/variables.js';
+import { getBaseUrl } from '../utils/variables.js';
 const postRegister = JSON.parse(open('../fixtures/postRegister.json'));
 
 export const options = {
@@ -16,7 +16,7 @@ export const options = {
 };
 
 export default function () {
-  const url = pegarBaseUrl() + '/users/register';
+  const url = getBaseUrl() + '/users/register';
 
   const payload = JSON.stringify(postRegister);
 
