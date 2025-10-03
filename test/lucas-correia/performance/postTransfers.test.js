@@ -2,7 +2,7 @@ import http from 'k6/http';
 import { check,sleep } from 'k6';
 import { obterToken } from '../helpers/authPerformance.js';
 import { getBaseUrl } from '../utils/variables.js';
-const postTransfers = JSON.parse(open('../fixtures/postTransfers.json'));
+const postTransfers = JSON.parse(open('../fixtures/postTransfersPerformance.json'));
 
 export const options = {
   stages: [
