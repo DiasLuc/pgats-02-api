@@ -1,0 +1,10 @@
+[
+  { "username": "junior.lima1", "password": "123456" },
+  { "username": "junior.lima2", "password": "123123" },
+  { "username": "junior.lima3", "password": "123654" },
+  { "username": "junior.lima1", "password": "123321" },
+  { "username": "junior.lima2", "password": "123111" },
+  { "username": "junior.lima3", "password": "123222" },
+  { "username": "junior.lima1", "password": "123333" },
+  { "username": "junior.lima2", "password": "123231" }
+]
