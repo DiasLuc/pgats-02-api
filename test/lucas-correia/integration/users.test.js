@@ -12,4 +12,4 @@ describe('Users', () => {
     });
 });
 
-// npx mocha test/lucas-correia/unit/users.test.js
+// npx mocha test/lucas-correia/integration/users.test.js

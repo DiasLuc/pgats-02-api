@@ -16,4 +16,4 @@ describe('Login', () => {
         expect(resposta.body).to.have.property('token');});
 });
 
-// npx mocha test/lucas-correia/unit/login.test.js
+// npx mocha test/lucas-correia/integration/login.test.js

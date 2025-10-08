@@ -38,4 +38,4 @@ describe('Transfers', () => {
     });
 });
 
-// npx mocha test/lucas-correia/unit/transfers.test.js
+// npx mocha test/lucas-correia/integration/transfers.test.js

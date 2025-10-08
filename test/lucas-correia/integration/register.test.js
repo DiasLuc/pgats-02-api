@@ -17,4 +17,4 @@ describe('Register', () => {
     });
 });
 
-// npx mocha test/lucas-correia/unit/register.test.js
+// npx mocha test/lucas-correia/integration/register.test.js
