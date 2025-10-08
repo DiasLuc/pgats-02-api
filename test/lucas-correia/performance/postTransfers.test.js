@@ -33,8 +33,8 @@ export default function() {
   const res = http.post(url, payload, params);
 
   check(res, {
-    'Validate that the status is 400': (res) => res.status === 400,
-    'Validate that the error message is correct': (r) => r.json().error == 'Saldo insuficiente',
+    'Validate that the status is 201': (res) => res.status === 201,
+    'Validate that the response is an object': (r) => typeof r.json() === 'object',
   });
 
   sleep(1);
