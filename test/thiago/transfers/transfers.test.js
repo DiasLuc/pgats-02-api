@@ -8,7 +8,6 @@ describe('Transfers', () => {
   let token;
   before(async () => {
     token = await getToken();
-    console.log('token: ', token);
   });
 
   describe('POST /transfers', () => {
@@ -30,6 +29,19 @@ describe('Transfers', () => {
         .and.to.be.a('number').and.to.be.equal(5100);
       expect(response.body).to.have.property('date').and.to.be.a('string');
 
+    })
+  });
+
+  describe('GET /transfers', () => {
+    it('Should return a list containing all the transfers', async () => {
+      const response = await request(process.env.BASE_URL_REST)
+        .get('/transfers')
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${token}`);
+
+      expect(response.status).to.be.equal(200);
+      expect(response.body).to.be.an('array')
+      expect(response.body).to.have.lengthOf(2);
     })
   });
 });
