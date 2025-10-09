@@ -6,7 +6,7 @@ const getToken = async (username, password) => {
   const loginResponse = await request(process.env.BASE_URL_REST)
     .post('/users/login')
     .set('Content-Type', 'application/json')
-    .send(bodyLogin);
+    .send(bodyLogin[0]);
 
   return loginResponse.body.token;
 }
