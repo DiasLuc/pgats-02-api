@@ -1,7 +1,8 @@
+
 import http from 'k6/http';
 import { sleep, check } from 'k6';
 import { getBaseUrl } from '../../../utils/variables.js';
-const postLogin = JSON.parse(open('../../../fixtures/postLogin.json'));
+const postRegister = JSON.parse(open('../../../fixtures/postRegister.json'));
 
 export const options = {
   stages: [
@@ -16,20 +17,18 @@ export const options = {
 };
 
 export default function () {
-  const url = getBaseUrl() + '/users/login';
-  const payload = JSON.stringify(postLogin[0]);
+  const url = getBaseUrl() + '/users/register';
+  const payload = JSON.stringify(postRegister);
   const params = {
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     }
   };
 
   const response = http.post(url, payload, params);
-
   check(response, {
-    'status code should be 200': (res) => res.status === 200,
-    'token property should be a string': (res) => typeof (res.json().token) == 'string',
+    'status code should be 201': (res) => res.status === 201,
+    'username should be a string': (res) => typeof (res.json().username) == 'string',
   });
   sleep(1);
-
-}
+};

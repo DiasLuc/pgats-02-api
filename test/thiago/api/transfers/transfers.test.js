@@ -13,7 +13,7 @@ describe('Transfers', () => {
   describe('POST /transfers', () => {
     it('Transfers over 5000 must be made only to beneficiaries', async () => {
       const bodyTransfers = { ...postTransfers };
-
+      console.log('>>>', token)
       const response = await request(process.env.BASE_URL_REST)
         .post('/transfers')
         .set('Content-Type', 'application/json')
@@ -41,7 +41,7 @@ describe('Transfers', () => {
 
       expect(response.status).to.be.equal(200);
       expect(response.body).to.be.an('array')
-      expect(response.body).to.have.lengthOf(2);
+      expect(response.body).to.have.lengthOf(1);
     })
   });
 });

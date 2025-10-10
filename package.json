@@ -4,8 +4,8 @@
   "description": "Esta API permite o registro, login, consulta de usuários e transferências de valores entre usuários. O objetivo é servir de base para estudos de testes e automação de APIs.",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test/**/*.test.js --timeout 10000 --reporter mochawesome",
-    "k6": "K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=html-report.html k6 run test/thiago/performance/**/*.test.js",
+    "test:api": "mocha test/thiago/api/**/*.test.js --timeout 10000 --reporter mochawesome",
+    "test:perf": "for /R test\\thiago\\performance\\ %f in (*.test.js) do (set \"K6_WEB_DASHBOARD=true\" && set \"K6_WEB_DASHBOARD_EXPORT=reports\\%~nf.html\" && k6 run \"%f\")",
     "test-rest-external": "mocha 'test/rest/external/**/*.test.js' --timeout 10000 --reporter mochawesome",
     "test-rest-controller": "mocha 'test/rest/controller/**/*.test.js' --timeout 10000 --reporter mochawesome",
     "test-graphql-external": "mocha 'test/graphql/external/**/*.test.js' --timeout 10000 --reporter mochawesome",
