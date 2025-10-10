@@ -17,7 +17,7 @@ describe('Users', () => {
     
         });
 
-        it('Should return error with status code 400, stating there was a validation error, or error already exists', async () => {
+        it('Should return error with status code 400, stating there was a validation error, or user already exists', async () => {
             let response = await registerUser(random_name(), '123456');
             let newUser = response.body.username;
             let secondResponse = await registerUser(newUser, '123456');
@@ -28,13 +28,11 @@ describe('Users', () => {
     describe('POST /users/login', () => {
         it('Should return status code 200, and should successfully login ', async () => {
             let response = await loginUser("julio", "123456")
-            console.log(`RESPONSE RESPONSE: ${response}`)
             expect(response.statusCode).to.equal(200);
         });
 
         it('Should return error with status code 400 due to invalid user or password', async () => {
             let response = await loginUser("julio", "WRONGPASSWORD")
-            console.log(`RESPONSE RESPONSE: ${response}`)
             expect(response.statusCode).to.equal(400);
         });
     });
