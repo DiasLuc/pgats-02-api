@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { sleep,check } from 'k6';
+import { sleep, check } from 'k6';
 import { getBaseUrl } from '../utils/variables.js';
 const postRegister = JSON.parse(open('../fixtures/postRegister.json'));
 
@@ -17,8 +17,9 @@ export const options = {
 
 export default function () {
   const url = getBaseUrl() + '/users/register';
-
-  const payload = JSON.stringify(postRegister);
+  const bodyRegister = { ...postRegister };
+  bodyRegister.username = Math.random().toString();
+  const payload = JSON.stringify(bodyRegister);
 
   const params = {
     headers: {
@@ -29,8 +30,8 @@ export default function () {
   const res = http.post(url, payload, params);
 
   check(res, {
-    'Validate that the status is 400': (r) => r.status === 400,
-    'Validate that the error message is correct': (r) => r.json().error == 'Usuário já existe',
+    'Validate that the status is 201': (r) => r.status === 201,
+    'Validate that the username is a string': (r) => typeof (r.json().username) == 'string',
   });
 
   sleep(1);
