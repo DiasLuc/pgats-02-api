@@ -2,11 +2,12 @@ const request = require('supertest');
 const { expect } = require('chai');
 require('dotenv').config();
 
-const postUsersRegister = require('../fixtures/postUsersRegister.json');
-const postUsersLogin = require('../fixtures/postUsersLogin.json');
+const postUsersRegister = require('../../fixtures/postUsersRegister.json');
+const postUsersLogin = require('../../fixtures/postUsersLogin.json');
 
 const random_name = require('node-random-name');
-const { registerUser } = require('../helpers/registerUser.js')
+const { registerUser } = require('../../helpers/registerUser.js');
+const { loginUser } = require('../../helpers/loginUser.js');
 describe('Users', () => {
 
     describe('POST /users/register', () => {
@@ -25,12 +26,16 @@ describe('Users', () => {
     });
 
     describe('POST /users/login', () => {
-        it.skip('Should return status code 200, and should successfully login ', async () => {
-
+        it('Should return status code 200, and should successfully login ', async () => {
+            let response = await loginUser("julio", "123456")
+            console.log(`RESPONSE RESPONSE: ${response}`)
+            expect(response.statusCode).to.equal(200);
         });
 
-        it.skip('Should return error with status code 400 due to invalid user or password', async () => {
-
+        it('Should return error with status code 400 due to invalid user or password', async () => {
+            let response = await loginUser("julio", "WRONGPASSWORD")
+            console.log(`RESPONSE RESPONSE: ${response}`)
+            expect(response.statusCode).to.equal(400);
         });
     });
 
