@@ -1,4 +1,3 @@
-
 import http from 'k6/http';
 import { sleep, check } from 'k6';
 import { getBaseUrl } from '../../../utils/variables.js';
@@ -6,8 +5,8 @@ const postRegister = JSON.parse(open('../../../fixtures/postRegister.json'));
 
 export const options = {
   stages: [
-    { duration: '5s', target: 10 },
-    { duration: '20s', target: 10 },
+    { duration: '1s', target: 10 },
+    { duration: '2s', target: 10 },
     { duration: '0s', target: 0 }
   ],
   thresholds: {
@@ -18,7 +17,9 @@ export const options = {
 
 export default function () {
   const url = getBaseUrl() + '/users/register';
-  const payload = JSON.stringify(postRegister);
+  const bodyRegister = { ...postRegister };
+  bodyRegister.username = Math.random().toString();
+  const payload = JSON.stringify(bodyRegister);
   const params = {
     headers: {
       'Content-Type': 'application/json'

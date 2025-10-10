@@ -11,12 +11,6 @@ export function getToken() {
       'Content-Type': 'application/json',
     },
   };
-
   const response = http.post(url, payload, params);
-  console.log('>>> url authPerf: ', url)
-  console.log('>>> payload authPerf: ', payload)
-  console.log('>>> response.body authPerf: ', response.body)
-  console.log('>>> response.status authPerf: ', response.status)
-  console.log('>>> response.json(\'token\'): ', response.json('token'))
   return response.json('token');
 }
