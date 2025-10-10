@@ -1,7 +1,7 @@
 const request = require('supertest');
 const { expect } = require('chai');
-const { getToken } = require('../../helpers/authentication');
-const postRegister = require('../../fixtures/postRegister.json');
+const { getToken } = require('../../../helpers/authentication');
+const postRegister = require('../../../fixtures/postRegister.json');
 require('dotenv').config();
 
 describe('Resgister', () => {

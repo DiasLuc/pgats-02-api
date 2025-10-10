@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha test/**/*.test.js --timeout 10000 --reporter mochawesome",
+    "k6": "K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=html-report.html k6 run test/thiago/performance/**/*.test.js",
     "test-rest-external": "mocha 'test/rest/external/**/*.test.js' --timeout 10000 --reporter mochawesome",
     "test-rest-controller": "mocha 'test/rest/controller/**/*.test.js' --timeout 10000 --reporter mochawesome",
     "test-graphql-external": "mocha 'test/graphql/external/**/*.test.js' --timeout 10000 --reporter mochawesome",
